@@ -1,0 +1,52 @@
+{
+  "name": "@rivium/pn-protocol",
+  "version": "0.1.0",
+  "description": "Lightweight messaging protocol layer by Rivium Push for web",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rivium-co/pn-protocol-web.git"
+  },
+  "keywords": [
+    "rivium",
+    "pn-protocol",
+    "realtime",
+    "messaging",
+    "websocket",
+    "protocol"
+  ],
+  "author": "Rivium",
+  "license": "MIT",
+  "homepage": "https://rivium.co/",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "rollup": "^4.0.0",
+    "tslib": "^2.6.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "mqtt": "^5.0.0"
+  }
+}
