@@ -7,8 +7,19 @@
  */
 
 export { Pushino } from './Pushino';
-export { PNSocket } from './PNSocket';
-export { PNConfig, PNConfigBuilder, PNAuth, PNAuthFactory, PNExitSignal } from './PNConfig';
+export { PNSocket, PN_DEFAULT_PROBE_TIMEOUT_MS } from './PNSocket';
+export { PNConfig, PNConfigBuilder, PNAuth, PNAuthFactory, PNExitSignal, PN_DEFAULTS } from './PNConfig';
+export {
+  PNEndpoint,
+  PNEndpointProvider,
+  PNEndpointListener,
+  PN_DEFAULT_WS_PATH,
+  normalizeWsPath,
+  pnEndpoint,
+  pnEndpointUrl,
+  pnEndpointEquals,
+} from './PNEndpoint';
+export { PNBackoff, PNFailures, PNEndpointRotation, PNConnectGuard } from './PNReconnect';
 export { PNMessage, PNMessageBuilder } from './PNMessage';
 export { PNDeliveryMode, deliveryModeFromQos } from './PNDeliveryMode';
 export { PNState } from './PNState';

@@ -1,6 +1,6 @@
 {
   "name": "@rivium/pn-protocol",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Lightweight messaging protocol layer by Rivium Push for web",
   "type": "module",
   "main": "dist/index.js",
@@ -19,7 +19,8 @@
   "scripts": {
     "build": "rollup -c",
     "clean": "rm -rf dist",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -42,7 +43,10 @@
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-typescript": "^11.0.0",
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
     "rollup": "^4.0.0",
+    "ts-jest": "^29.4.14",
     "tslib": "^2.6.0",
     "typescript": "^5.0.0"
   },

@@ -56,7 +56,7 @@ export interface PNConfig {
   /** Authentication credentials */
   auth?: PNAuth;
 
-  /** Keep connection alive interval in seconds */
+  /** Keep connection alive interval in seconds (default: 30) */
   heartbeatInterval?: number;
 
   /** Connection timeout in seconds */
@@ -68,13 +68,13 @@ export interface PNConfig {
   /** Auto-reconnect on connection loss */
   autoReconnect?: boolean;
 
-  /** Maximum reconnect attempts (0 = infinite) */
+  /** Maximum reconnect attempts (0 = never give up, the default) */
   maxReconnectAttempts?: number;
 
-  /** Initial reconnect delay in milliseconds */
+  /** Initial reconnect delay in milliseconds (default: 1000) */
   reconnectDelay?: number;
 
-  /** Maximum reconnect delay in milliseconds */
+  /** Maximum reconnect delay in milliseconds, before ±20 % jitter (default: 60000) */
   maxReconnectDelay?: number;
 
   /** Exit signal - message sent on unexpected disconnect (Last Will) */
@@ -88,18 +88,29 @@ export interface PNConfig {
 }
 
 /**
+ * Defaults shared by PNConfigBuilder and PNSocket.
+ */
+export const PN_DEFAULTS = {
+  heartbeatInterval: 30,
+  connectionTimeout: 30,
+  maxReconnectAttempts: 0,
+  reconnectDelay: 1000,
+  maxReconnectDelay: 60000,
+} as const;
+
+/**
  * Builder for PNConfig
  */
 export class PNConfigBuilder {
   private config: Partial<PNConfig> = {
     port: 443,
-    heartbeatInterval: 60,
-    connectionTimeout: 30,
+    heartbeatInterval: PN_DEFAULTS.heartbeatInterval,
+    connectionTimeout: PN_DEFAULTS.connectionTimeout,
     freshStart: true,
     autoReconnect: true,
-    maxReconnectAttempts: 10,
-    reconnectDelay: 1000,
-    maxReconnectDelay: 300000,
+    maxReconnectAttempts: PN_DEFAULTS.maxReconnectAttempts,
+    reconnectDelay: PN_DEFAULTS.reconnectDelay,
+    maxReconnectDelay: PN_DEFAULTS.maxReconnectDelay,
     secure: true,
     wsPath: '/mqtt',
   };
